@@ -13,6 +13,7 @@ require('./config/database');
 require('./config/passport');
 var indexRouter = require('./routes/index');
 var blogsRouter = require('./routes/blogs');
+var signsRouter = require('./routes/signs');
 var app = express();
 
 // view engine setup
@@ -35,6 +36,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
+app.use('/', signsRouter);
 
 
 // catch 404 and forward to error handler
