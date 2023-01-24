@@ -4,7 +4,6 @@ const moment = require('moment');
 
 
 const blogSchema = new Schema({
-    date: { type: Date },
     monthlySunSign:{
         type:String,
         enum: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'],
@@ -16,6 +15,7 @@ const blogSchema = new Schema({
         task: { type: String },
         completed: { type: Boolean }
     }],
+    user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
     timestamps:true
 });
