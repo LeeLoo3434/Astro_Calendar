@@ -1,0 +1,10 @@
+<%- include('../partials/header') %>
+<h1>Horoscope for <%= blog.monthlySunSign %> <%= blog.date.toDateString() %></h1>
+<p>Daily Moon Sign: <%= blog.dailyMoonSign %></p>
+<p>Daily Intention: <%= blog.dailyIntention %></p>
+<h2>Top Priorities</h2>
+<ul>
+    <% for(let i = 0; i < blog.topPriorities.length; i++) { %>
+        <li> <%= blog.topPriorities[i] %> </li>
+        <% } %>
+<%- include('../partials/footer') %>

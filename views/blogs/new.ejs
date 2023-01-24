@@ -1,0 +1,42 @@
+<%- include('../partials/header') %>
+<h2>user's name and today's date</h2>
+<form action="/blogs" method="POST">
+  <label>Today's Moon Sign:
+    <input type="text" name="dailyMoonSign">
+  </label><br>
+  <label>>Date
+    <input type="datetime-local" name="date">
+  </label><br>
+  <label>Daily Intention:
+    <input type="textarea" name="dailyIntention">
+  </label><br>
+  <label>Monthly Sun Sign
+    <select name="monthlySunSign">
+      <option value="Aries">Aries</option>
+      <option value="Taurus">Taurus</option>
+      <option value="Gemini">Gemini</option>
+      <option value="Cancer">Cancer</option>
+      <option value="Leo">Leo</option>
+      <option value="Virgo">Virgo</option>
+      <option value="Libra">Libra</option>
+      <option value="Scorpio">Scorpio</option>
+      <option value="Sagittarius">Sagittarius</option>
+      <option value="Capricorn">Capricorn</option>
+      <option value="Aquarius">Aquarius</option>
+      <option value="Pisces">Pisces</option>
+    </select>
+  </label><br>
+  <label>Top Priorities:
+    <input type="textarea" name="topPriorities">
+  </label><br>
+  <td>
+    <label>Todo's:</label><br>
+    <% for(let i = 0; i < 5; i++) { %>
+      <input type="checkbox" name="todos[<%= i %>].completed" value="<%= i %>">
+      <input type="text" name="todos[<%= i %>].task" placeholder="Enter task">
+      <br>
+    <% } %>
+  </td>
+  <button type="submit">Daily Intentions</button>
+</form>
+<%- include('../partials/footer') %>

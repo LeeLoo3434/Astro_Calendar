@@ -1,0 +1,38 @@
+
+<%- include('../partials/header') %>
+
+
+<table id="list">
+<thead>
+    <tr>
+      <th>Date</th>
+      <th>Sun Sign</th>
+      <th>Moon Sign</th>
+      <th>Daily Intention</th>
+      <th>To-Do List</th>
+      
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% blogs.forEach(function(b) { %>
+      <tr>
+        <td><%= b.date %></td>
+        <td><%= b.monthlySunSign %></td>
+        <td><%= b.dailyMoonSign %></td>
+        <td><%= b.dailyIntention %></td>
+        <td><%= b.topPriorities %></td>
+        <td>
+          <% b.todos.forEach(function(task) { %>
+            <input type="checkbox" name="todos.completed" value="<%= task.task %>" <%= task.completed ? 'checked' : '' %>>
+            <%= task.task %>
+            <br>
+          <% }); %>
+        </td>
+        <td><a href="/blogs/<%= b._id %>" class="square_btn">Details</a></td>
+      </tr>
+      <% }); %>
+    </tbody>
+  </table>
+  
+<%- include('../partials/footer') %>
