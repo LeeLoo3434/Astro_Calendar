@@ -1,5 +1,6 @@
 <%- include('../partials/header') %>
-<h1>Horoscope for <%= blog.monthlySunSign %> <%= blog.date.toDateString() %></h1>
+
+<h1><%= blog.monthlySunSign %>Season</h1>
 <p>Daily Moon Sign: <%= blog.dailyMoonSign %></p>
 <p>Daily Intention: <%= blog.dailyIntention %></p>
 <h2>Top Priorities</h2>
@@ -7,4 +8,36 @@
     <% for(let i = 0; i < blog.topPriorities.length; i++) { %>
         <li> <%= blog.topPriorities[i] %> </li>
         <% } %>
+        <h2>Todo's</h2>
+<ul>
+    <% for(let i = 0; i < blog.todos.length; i++) { %>
+        <li> <%= blog.todos[i].task %> </li>
+    <% } %>
+</ul>
+<form action="/blogs/<%= blog._id %>" method="PUT">
+    <label>Today's Moon Sign:
+      <input type="text" name="dailyMoonSign" value="<%= blog.dailyMoonSign %>">
+    </label><br>
+    <label>Daily Intention:
+      <input type="textarea" name="dailyIntention" value="<%= blog.dailyIntention %>">
+    </label><br>
+    <label>Monthly Sun Sign
+      <select name="monthlySunSign">
+        <option value="Aries" <%= blog.monthlySunSign == "Aries" ? "selected" : "" %>>Aries</option>
+        <option value="Taurus" <%= blog.monthlySunSign == "Taurus" ? "selected" : "" %>>Taurus</option>
+        <option value="Gemini" <%= blog.monthlySunSign == "Gemini" ? "selected" : "" %>>Gemini</option>
+        <option value="Cancer" <%= blog.monthlySunSign == "Cancer" ? "selected" : "" %>>Cancer</option>
+        <option value="Leo" <%= blog.monthlySunSign == "Leo" ? "selected" : "" %>>Leo</option>
+        <option value="Virgo" <%= blog.monthlySunSign == "Virgo" ? "selected" : "" %>>Virgo</option>
+        <option value="Libra" <%= blog.monthlySunSign == "Libra" ? "selected" : "" %>>Libra</option>
+        <option value="Scorpio" <%= blog.monthlySunSign == "Scorpio" ? "selected" : "" %>>Scorpio</option>
+        <option value="Sagittarius" <%= blog.monthlySunSign == "Sagittarius" ? "selected" : "" %>>Sagittarius</option>
+        <option value="Capricorn" <%= blog.monthlySunSign == "Capricorn" ? "selected" : "" %>>Capricorn</option>
+        <option value="Aquarius" <%= blog.monthlySunSign == "Aquarius" ? "selected" : "" %>>Aquarius</option>
+        <option value="Pisces" <%= blog.monthlySunSign == "Pisces" ? "selected" : "" %>>Pisces</option>
+      </select>
+    </label><br>
+  
+
+
 <%- include('../partials/footer') %>

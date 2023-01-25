@@ -1,5 +1,5 @@
 <%- include('../partials/header') %>
-<h2>user's name and today's date</h2>
+<h2><%= user.name %> on <%= new Date().toDateString() %> </h2>
 <form action="/blogs" method="POST">
   <label>Today's Moon Sign:
     <input type="text" name="dailyMoonSign">

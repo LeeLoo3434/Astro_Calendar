@@ -38,9 +38,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-
-// app.use(passport.initialize())
-
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
 app.use('/', astroInformationRouter);

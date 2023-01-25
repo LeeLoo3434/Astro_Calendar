@@ -1,11 +1,13 @@
 const Blog = require("../models/blog");
 
 
+
 module.exports = {
 index,
 create,
 new:newBlog,
-show
+show,
+edit,
 };
 
 function index(req, res) {
@@ -27,24 +29,28 @@ function create(req, res) {
     // })
     const blog = new Blog(req.body);
     blog.save(function (err) {
-      console.log(blog);
-      res.redirect('/blogs');
+        console.log(blog);
+        res.redirect('/blogs');
+    });
+}
+    function newBlog(req, res) {
+    res.render("blogs/new");
+}
+
+function show(req, res) {
+    Blog.findById(req.params.id, (err, blog) => {
+      if (err) {
+        console.log(err);
+        return "Error occurred while trying to find the blog";
+      }
+      if (!blog) {
+        return "Blog not found";
+      }
+      res.render("blogs/show", { blog });
     });
   }
-  function newBlog(req, res) {
-    res.render("blogs/new");
-  }
 
-  function show(req,res){
-      Blog.findById(req.params.id, (err, blog) => {
-          if(err){
-              console.log(err);
-              return("Error occurred while trying to find the blog");
-          }
-          if(!blog){
-              return ("Blog not found");
-          }
-          res.render("blogs/show", { blog });
-      });
-  };
+  function edit(req,res){
+   
+  }
 
