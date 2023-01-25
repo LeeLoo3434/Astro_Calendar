@@ -13,7 +13,7 @@ require('./config/database');
 require('./config/passport');
 var indexRouter = require('./routes/index');
 var blogsRouter = require('./routes/blogs');
-var signsRouter = require('./routes/signs');
+var astroInformationRouter = require('./routes/astroInformation');
 var app = express();
 
 // view engine setup
@@ -29,14 +29,21 @@ app.use(session({
   resave:false,
   saveUninitialized:true
 }));
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(express.static(path.join(__dirname, 'public')));
+// Add this middleware BELOW passport middleware
+app.use(function (req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
+
 // app.use(passport.initialize())
 
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
-app.use('/', signsRouter);
+app.use('/', astroInformationRouter);
 
 
 // catch 404 and forward to error handler
