@@ -14,11 +14,11 @@ let blog, blogs;
 
 // console.log all movie documents
 // Preview of promise syntax - coming SOON!
-// Movie.find({}).then(console.log('found movies'));
+Blog.find({}).then(console.log('found blogs'));
 
 // console.log('Time to CRUD!');
-// Movie.updateMany(
+// Blog.updateMany(
 //     {},  // Query object determines which docs to update
-//     {cast: []},  // Update object has properties to update
+//     {Blog},  // Update object has properties to update
 //     function(err, result) {console.log(result)}
 // );

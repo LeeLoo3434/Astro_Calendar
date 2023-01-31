@@ -2,6 +2,15 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const moment = require('moment');
 
+const todoSchema = new Schema({
+    tasks:{
+        type:String
+    },
+    completed:{
+        type:Boolean,
+    }
+})
+
 
 const blogSchema = new Schema({
     monthlySunSign:{
@@ -11,7 +20,7 @@ const blogSchema = new Schema({
     dailyMoonSign: { type: String },
     dailyIntention: { type: String },
     topPriorities: { type: String },
-    scheduledPlans:{type:String},
+    todos:[todoSchema],
     user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
     timestamps:true

@@ -37,7 +37,7 @@ function create(req, res) {
     });
 }
 
-    function newBlog(req, res) {
+function newBlog(req, res) {
     res.render("blogs/new");
 }
 
@@ -56,25 +56,25 @@ function show(req, res) {
 }
 
 
-    function edit(req,res){
-        Blog.findById(req.params.id, function(err, foundBlog) {
-        if (err) {
-        res.redirect("/blogs");
-        } else {
-        res.render("blogs/edit", { blog: foundBlog });
+function edit(req,res){
+    Blog.findById(req.params.id, function(err, foundBlog) {
+    if (err) {
+    res.redirect("/blogs");
+    } else {
+    res.render("blogs/edit", { blog: foundBlog });
         }
-      })}
+    })
+}
 
-      function deleteBlog(req, res) {
-        const id = req.params.id;
-        Blog.deleteOne({ _id: id }, function(err) {
-          if (err) {
-            console.log(err);
-          } else {
-            res.redirect('/blogs');
-          }
-        });
-      }
-      
+function deleteBlog(req, res) {
+    const id = req.params.id;
+    Blog.deleteOne({ _id: id }, function(err) {
+        if (err) {
+        console.log(err);
+        } else {
+        res.redirect('/blogs');
+        }
+    });
+}
 
 
