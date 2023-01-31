@@ -1,0 +1,15 @@
+<%- include('../partials/header') %>
+
+<form action="/blogs/<%=blog.id%>" method="">
+  <label>Daily Intention:
+    <input type="textarea" name="dailyIntention" value="<%= blog.dailyIntention %>">
+  </label><br>
+  <label>Top Priorities:
+    <input type="textarea" name="topPriorities" value="<%= blog.topPriorities %>">
+  </label><br>
+  <label>Today's Plans:
+    <input type="textarea" name="scheduledPlans" value="<%= blog.scheduledPlans %>">
+  </label><br>
+  <button type="submit">Update</button>
+</form>
+<%- include('../partials/footer') %>

@@ -1,56 +1,80 @@
 const Blog = require("../models/blog");
 
-
-
 module.exports = {
 index,
 create,
 new:newBlog,
 show,
 edit,
+delete:deleteBlog
 };
 
 function index(req, res) {
-    Blog.find({}, function (err, blogs) {
-    res.render("blogs/index", { blogs });
+    if (!req.user) return res.redirect('/');
+    if(req.user){
+    Blog.find({user: req.user._id}, function (err, blogs) {
+        if (err) {
+            res.send(err);
+        } else {
+            res.render("blogs/index", { blogs:blogs });
+        }
     });
+    }
+    else{
+        res.redirect('/');
+    }
 }
 
+
 function create(req, res) {
-    // Convert nowShowing's checkbox of nothing or "on" to boolean
-    // req.body.nowShowing = !!req.body.nowShowing;
-    // // Delete empty properties on req.body for defaults to happen
-    // for (let key in req.body) {
-    //   if (req.body[key] === "") delete req.body[key];
-    // }
-    // One way to create data using a mongoose model
-    // Movie.create(req.body, function(err, newMovie) {
-    //   // functionality to run after movie has been created
-    // })
     const blog = new Blog(req.body);
+    if (!req.user) return res.redirect('/');
+    console.log(req.body);``
+    blog.user = req.user._id;
     blog.save(function (err) {
         console.log(blog);
         res.redirect('/blogs');
     });
 }
+
     function newBlog(req, res) {
     res.render("blogs/new");
 }
 
 function show(req, res) {
-    Blog.findById(req.params.id, (err, blog) => {
-      if (err) {
-        console.log(err);
-        return "Error occurred while trying to find the blog";
-      }
-      if (!blog) {
-        return "Blog not found";
-      }
-      res.render("blogs/show", { blog });
-    });
-  }
+    Blog.findById({_id: req.params.id})
+        .populate('user')
+        .exec((err, blog) => {
+            if (err) {
+                console.log(err);
+            }
+            if (!blog) {
+                console.log("Blog not found")
+            }
+            res.render('blogs/show', {blog:blog})
+        });
+}
 
-  function edit(req,res){
-   
-  }
+
+    function edit(req,res){
+        Blog.findById(req.params.id, function(err, foundBlog) {
+        if (err) {
+        res.redirect("/blogs");
+        } else {
+        res.render("blogs/edit", { blog: foundBlog });
+        }
+      })}
+
+      function deleteBlog(req, res) {
+        const id = req.params.id;
+        Blog.deleteOne({ _id: id }, function(err) {
+          if (err) {
+            console.log(err);
+          } else {
+            res.redirect('/blogs');
+          }
+        });
+      }
+      
+
 

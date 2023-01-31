@@ -3,9 +3,14 @@ var router = express.Router();
 const passport = require('passport');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.redirect('/blogs');
+router.get('/', (req, res) => {
+  if (req.user) {
+      res.redirect('/blogs');
+  } else {
+      res.render('home');
+  }
 });
+
 
 // Google OAuth login route
 router.get('/auth/google', passport.authenticate(

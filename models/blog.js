@@ -10,11 +10,8 @@ const blogSchema = new Schema({
     },
     dailyMoonSign: { type: String },
     dailyIntention: { type: String },
-    topPriorities: { type: [String] },
-    todos: [{
-        task: { type: String },
-        completed: { type: Boolean }
-    }],
+    topPriorities: { type: String },
+    scheduledPlans:{type:String},
     user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {
     timestamps:true

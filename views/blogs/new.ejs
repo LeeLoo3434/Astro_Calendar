@@ -26,14 +26,9 @@
   <label>Top Priorities:
     <input type="textarea" name="topPriorities">
   </label><br>
-  <td>
-    <label>Todo's:</label><br>
-    <% for(let i = 0; i < 5; i++) { %>
-      <input type="checkbox" name="todos[<%= i %>].completed" value="<%= i %>">
-      <input type="text" name="todos[<%= i %>].task" placeholder="Enter task">
-      <br>
-    <% } %>
-  </td>
-  <button type="submit">Daily Intentions</button>
+  <label>Today's Plans:
+    <input type="textarea" name="scheduledPlans">
+  </label><br>
+  <button type="submit">Plans For Today</button>
 </form>
 <%- include('../partials/footer') %>

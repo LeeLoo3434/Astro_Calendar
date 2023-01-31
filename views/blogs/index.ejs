@@ -1,35 +1,25 @@
-
 <%- include('../partials/header') %>
 
-<table id="list">
-<thead>
-    <tr>
-      <th>Sun Sign</th>
-      <th>Moon Sign</th>
-      <th>Daily Intention</th>
-      <th>To-Do List</th>
-      
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height:100vh; background-image: url(https://img.jagranjosh.com/images/2022/September/2192022/ast-compressed.jpg); background-size: cover;">
+  <div class="row">
     <% blogs.forEach(function(b) { %>
-      <tr>
-        <td><%= b.monthlySunSign %></td>
-        <td><%= b.dailyMoonSign %></td>
-        <td><%= b.dailyIntention %></td>
-        <td><%= b.topPriorities %></td>
-        <td>
-          <% b.todos.forEach(function(task) { %>
-            <input type="checkbox" name="todos.completed" value="<%= task.task %>" <%= task.completed ? 'checked' : '' %>>
-            <%= task.task %>
-            <br>
-          <% }); %>
-        </td>
-        <td><a href="/blogs/<%= b._id %>" class="square_btn">Details</a></td>
-      </tr>
-      <% }); %>
-    </tbody>
-  </table>
-  
+    <div class="col-lg-8 col-md-10 col-sm-12">
+      <div class="card" style="border: 5px solid #000000; border-radius: 25px;">
+        <div class="card-body bg-gradient-black">
+          <h1 class="text-center text-primary"><%= b.monthlySunSign %> Season</h1>
+          <p class="card-text text-info">Created at: <%= b.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
+          <p class="card-text text-secondary">Moon Sign: <%= b.dailyMoonSign %></p>
+        </div>
+        <div class="card-footer d-flex justify-content-center">
+          <td><a href="/blogs/<%= b._id %>" class="btn btn-sm">Details</td>
+            <form action="/blogs/<%= b._id %>?_method=DELETE" class="delete_form" method="POST">
+              <button type="submit" class="btn btn-sm">Delete</button>
+            </form>
+        </div>
+      </div>
+    </div>
+    <% }) %>
+  </div>
+</div>
 <%- include('../partials/footer') %>
+
