@@ -1,6 +1,6 @@
 <%- include('../partials/header') %>
 
-<form action="/blogs/<%=blog.id%>" method="">
+<form action="/blogs/<%=blog.id%>?_method=PUT" method="POST">
   <label>Daily Intention:
     <input type="textarea" name="dailyIntention" value="<%= blog.dailyIntention %>">
   </label><br>

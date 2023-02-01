@@ -14,6 +14,7 @@ require('./config/database');
 require('./config/passport');
 var indexRouter = require('./routes/index');
 var blogsRouter = require('./routes/blogs');
+var todosRouter = require('./routes/reviews')
 var astroInformationRouter = require('./routes/astroInformation');
 var app = express();
 
@@ -42,6 +43,7 @@ app.use(function (req, res, next) {
 
 app.use('/', indexRouter);
 app.use('/blogs', blogsRouter);
+app.use('/', todosRouter);
 app.use('/', astroInformationRouter);
 
 

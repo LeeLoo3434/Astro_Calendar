@@ -9,7 +9,7 @@ router.get('/:id', blogsCtrl.show);
 router.post('/', blogsCtrl.create);
 router.get('/:id/edit', blogsCtrl.edit);
 router.delete('/:id', blogsCtrl.delete)
-
+router.put('/:id', blogsCtrl.update)
 
 
 module.exports = router;

@@ -16,7 +16,7 @@ let blog, blogs;
 // Preview of promise syntax - coming SOON!
 Blog.find({}).then(console.log('found blogs'));
 
-// console.log('Time to CRUD!');
+
 // Blog.updateMany(
 //     {},  // Query object determines which docs to update
 //     {Blog},  // Update object has properties to update

@@ -6,7 +6,8 @@ create,
 new:newBlog,
 show,
 edit,
-delete:deleteBlog
+delete:deleteBlog,
+update
 };
 
 function index(req, res) {
@@ -77,4 +78,14 @@ function deleteBlog(req, res) {
     });
 }
 
+
+function update(req, res) {
+    Blog.findByIdAndUpdate(req.params.id,
+        req.body,
+        { new: true },
+        function (err, blog) {
+            if (err || !blog) return res.redirect('/blogs');
+            res.redirect(`/blogs/${req.params.id}`)
+    })
+}
 
