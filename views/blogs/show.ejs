@@ -16,6 +16,9 @@
             <p class="card-text text-success">Daily Intention: <%= blog.dailyIntention %>
             </p>
             <p class="card-text text-danger">Top Priorities: <%= blog.topPriorities %>
+            </p>
+            <p class="card-text text-info">Today's Plans: <%= blog.scheduledPlans %>
+            </p>
           </div>
           <div class="card-footer">
             <td><a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary">Edit</a></td>
@@ -28,6 +31,9 @@
               <% blog.todos.forEach(function(t) { %>
                 <li>
                   <%= t.tasks %>
+                    <form action="/todos/<%= t._id %>?_method=DELETE" method="POST" id="deleteTodos">
+                      <button class="btn" type="submit">delete</button>
+                    </form>
                 </li>
                 <% }); %>
             </ul>
