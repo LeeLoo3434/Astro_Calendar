@@ -8,13 +8,8 @@ const todoSchema = new Schema({
     },
     completed:{
         type:Boolean,
-    },
-    dailyMoonSign: { type: String },
-    dailyIntention: { type: String },
-    topPriorities: { type: String },
-},{
-    timestamps:true
-});
+    }
+})
 
 
 const blogSchema = new Schema({
@@ -22,6 +17,9 @@ const blogSchema = new Schema({
         type:String,
         enum: ['Aries', 'Taurus', 'Gemini', 'Cancer', 'Leo', 'Virgo', 'Libra', 'Scorpio', 'Sagittarius', 'Capricorn', 'Aquarius', 'Pisces'],
     },
+    dailyMoonSign: { type: String },
+    dailyIntention: { type: String },
+    topPriorities: { type: String },
     todos:[todoSchema],
     user: {type: Schema.Types.ObjectId, ref: 'User'}
 }, {

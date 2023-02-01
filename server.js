@@ -14,7 +14,7 @@ require('./config/database');
 require('./config/passport');
 var indexRouter = require('./routes/index');
 var blogsRouter = require('./routes/blogs');
-var todosRouter = require('./routes/reviews')
+var todosRouter = require('./routes/todos')
 var astroInformationRouter = require('./routes/astroInformation');
 var app = express();
 
