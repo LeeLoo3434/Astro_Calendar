@@ -13,11 +13,8 @@
           </div>
           <div class="card-footer">
             <td><a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary">Edit</a></td>
+            <td><a href="/todos/new" class="btn btn-primary">Today's To Do List</a></td>
           </div>
-          <br><br><h2>To Do List</h2>
-          <form method="POST" action="/blogs/<%= blog._id %>/todos">
-          <label>Review:</label>
-          <textarea name="content"></textarea>
         </div>
       </div>
     </div>

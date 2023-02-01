@@ -1,0 +1,12 @@
+<%- include('../partials/header') %>
+<h2><%= user.name %> on <%= new Date().toDateString() %> </h2>
+<form action="/todos/new" method="POST">
+<label>To Do List
+    <input type="text" name="task">
+</label><br>
+<label>
+    <input type="checkbox" name="completed">
+</label>
+    <button type="submit">Add Task</button>
+</form>
+<%- include('../partials/footer') %>
