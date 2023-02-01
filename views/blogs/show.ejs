@@ -1,23 +1,47 @@
 <%- include('../partials/header') %>
-<div class="container-fluid d-flex justify-content-center align-items-center" style="min-height:100vh; background-image: url(https://img.jagranjosh.com/images/2022/September/2192022/ast-compressed.jpg); background-size: cover;">
+  <div class="container-fluid d-flex justify-content-center align-items-center"
+    style="min-height:100vh; background-image: url(https://img.jagranjosh.com/images/2022/September/2192022/ast-compressed.jpg); background-size: cover;">
     <div class="row">
       <div class="col-lg-8 col-md-10 col-sm-12">
         <div class="card" style="border: 5px solid #000000; border-radius: 25px;">
           <div class="card-body bg-gradient-black">
-            <h2><%= user.name %> on <%= new Date().toDateString() %> </h2>
-            <h3 class="text-center text-primary"><%= blog.monthlySunSign %> Season</h3>
-            <p class="card-text text-secondary">Daily Moon Sign: <%= blog.dailyMoonSign %></p>
-            <p class="card-text text-success">Daily Intention: <%= blog.dailyIntention %></p>
-            <p class="card-text text-danger">Top Priorities: <%= blog.topPriorities %></p>
-            <p class="card-text text-info">Today's Plans: <%= blog.scheduledPlans %></p>
+            <h2>
+
+            </h2>
+            <h3 class="text-center text-primary">
+              <%= blog.monthlySunSign %> Season
+            </h3>
+            <p class="card-text text-secondary">Daily Moon Sign: <%= blog.dailyMoonSign %>
+            </p>
+            <p class="card-text text-success">Daily Intention: <%= blog.dailyIntention %>
+            </p>
+            <p class="card-text text-danger">Top Priorities: <%= blog.topPriorities %>
           </div>
           <div class="card-footer">
             <td><a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary">Edit</a></td>
-            <td><a href="/todos/new" class="btn btn-primary">Today's To Do List</a></td>
           </div>
+          <br><br>
+          <h2>To Do List</h2>
+
+          <% if (blog.todos.length) { %>
+            <ul>
+              <% blog.todos.forEach(function(t) { %>
+                <li>
+                  <%= t.tasks %>
+                </li>
+                <% }); %>
+            </ul>
+            <% } else { %>
+              <h5>No Tasks Yet</h5>
+              <% } %>
+
+                <form method="POST" action="/blogs/<%= blog._id %>/todos">
+                  <label>add your task:</label>
+                  <textarea name="tasks"></textarea>
+                  <input type="submit" value="Add Todo">
         </div>
       </div>
     </div>
   </div>
-  
-<%- include('../partials/footer') %>
+
+  <%- include('../partials/footer') %>

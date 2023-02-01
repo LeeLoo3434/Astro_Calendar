@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var todosCtrl = require('../controllers/todos')
+const express = require('express');
+const router = express.Router();
+const todosCtrl = require('../controllers/todos')
 
-router.get('/todos/new', todosCtrl.new);
+router.post('/blogs/:id/todos', todosCtrl.create)
 
 module.exports = router;

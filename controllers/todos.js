@@ -1,9 +1,16 @@
-const Todo = require("../models/blog");
+const Blog = require("../models/blog");
 
 module.exports = {
-    new:newTodo,
-    };
+    create,
 
-    function newTodo(req, res) {
-        res.render("todos/new");
-    }
+};
+
+function create(req, res) {
+    Blog.findById(req.params.id, function (err, blog) {
+        blog.todos.push(req.body)
+        blog.save(function (err) {
+            console.log(err)
+            res.redirect(`/blogs/${blog._id}`)
+        })
+    })
+}
