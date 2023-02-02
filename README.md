@@ -1,4 +1,4 @@
-https://git.heroku.com/astro-calendar.git
+https://astro-calendar.herokuapp.com
 <br>
 The home page will prompt the user to login, to start creating their personal Planner. 
 ![9948706C-51FE-4E96-A0DF-DB2A0AD7DEE3](https://user-images.githubusercontent.com/113068944/216198126-71e2e474-3532-49b4-a27b-b7d11994bd8a.jpeg)
