@@ -17,37 +17,48 @@
             </p>
             <p class="card-text text-danger">Top Priorities: <%= blog.topPriorities %>
             </p>
-            <p class="card-text text-info">Today's Plans: <%= blog.scheduledPlans %>
-            </p>
           </div>
-          <div class="card-footer">
+          <div class="card-footer d-flex justify-content-center">
             <td><a href="/blogs/<%=blog._id%>/edit" class="btn btn-primary">Edit</a></td>
           </div>
-          <br><br>
-          <h2>To Do List</h2>
-
-          <% if (blog.todos.length) { %>
-            <ul>
-              <% blog.todos.forEach(function(t) { %>
-                <li>
-                  <%= t.tasks %>
-                    <form action="/todos/<%= t._id %>?_method=DELETE" method="POST" id="deleteTodos">
-                      <button class="btn" type="submit">delete</button>
-                    </form>
-                </li>
-                <% }); %>
-            </ul>
-            <% } else { %>
-              <h5>No Tasks Yet</h5>
-              <% } %>
-
-                <form method="POST" action="/blogs/<%= blog._id %>/todos">
-                  <label>add your task:</label>
-                  <textarea name="tasks"></textarea>
-                  <input type="submit" value="Add Todo">
         </div>
       </div>
     </div>
-  </div>
-
-  <%- include('../partials/footer') %>
+    <br><br>
+    <div class="row d-flex justify-content-center">
+      <div class="col-lg-8 col-md-10 col-sm-12">
+        <div class="container-fluid d-flex justify-content-center align-items-center">
+          <div class="row">
+            <div class="col-lg-8 col-md-10 col-sm-12">
+              <div class="card" style="border: 5px solid #000000; border-radius: 25px;">
+                <div class="card-body bg-gradient-black">
+                  <h2>To Do List</h2>
+                  <% if (blog.todos.length) { %>
+                    <ul>
+                      <% blog.todos.forEach(function(t) { %>
+                        <li>
+                          <%= t.tasks %>
+                          <form action="/todos/<%= t._id %>?_method=DELETE" method="POST" id="deleteTodos">
+                            <button class="btn" type="submit">delete</button>
+                          </form>
+                        </li>
+                        <% }); %>
+                    </ul>
+                    <% } else { %>
+                      <h5 class="text-center">No Tasks Yet</h5>
+                      <% } %>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-8 col-md-10 col-sm-12">
+                <form method="POST" action="/blogs/<%= blog._id %>/todos" class="d-flex justify-content-center">
+                  <label>add your task:</label>
+                  <textarea name="tasks"></textarea>
+                  <input type="submit" value="Add Todo">
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      <%- include('../partials/footer') %>

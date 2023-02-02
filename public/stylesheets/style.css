@@ -1,28 +1,15 @@
-.square_btn {
-  position: relative;
-  display: inline-block;
-  font-weight: bold;
-  padding: 8px 10px 5px 10px;
-  text-decoration: none;
-  color: #FFA000;
-  background: #fff1da;
-  border-bottom: solid 4px #FFA000;
-  border-radius: 15px 15px 0 0;
-  transition: .4s;
-}
 
-.square_btn:hover {
-  background: #ffc25c;
-  color: #FFF;
+#btn{
+  margin-left: 50px;
+  margin-top: 25px;
 }
 
 
   form {
-    margin: 50px;
+    margin: 20px;
     padding: 20px;
     background-color: #F7F8FA;
     border-radius: 10px;
-    box-shadow: 0px 0px 10px #D3D3D3;
   }
 
 
@@ -42,17 +29,3 @@
   }
 
 
-  button[type='submit'] {
-    width: 100%;
-    background-color: #4CAF50;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 20px;
-  }
-  button[type='submit']:hover {
-    background-color: #45a049;
-  }

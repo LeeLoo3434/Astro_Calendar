@@ -10,11 +10,11 @@
           <p class="card-text text-info">Created at: <%= b.createdAt.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></p>
           <p class="card-text text-secondary">Moon Sign: <%= b.dailyMoonSign %></p>
         </div>
-        <div class="card-footer d-flex justify-content-center">
-          <td><a href="/blogs/<%= b._id %>" class="btn btn-sm">Details</td>
-            <form action="/blogs/<%= b._id %>?_method=DELETE" class="delete_form" method="POST">
-              <button type="submit" class="btn btn-sm">Delete</button>
-            </form>
+        <div class="card-footer">
+          <a href="/blogs/<%= b._id %>" id="btn">Details</a>
+          <form action="/blogs/<%= b._id %>?_method=DELETE" class="delete_form" method="POST">
+            <button type="submit" class="btn btn-info">Delete</button>
+          </form>
         </div>
       </div>
     </div>
